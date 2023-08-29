@@ -1,15 +1,18 @@
 # Grid Paint
 
 "Grid Paint" is a simple Java graphics program that lets you create and manipulate a grid of colored cells using keyboard inputs.
+<p></p>
 
 You can move the cursor using arrow keys and perform various actions:
 
-Arrow Keys: Move the cursor in different directions (up, down, left, right).
-Space Key: Fill the cell under the cursor with a green color.
-D Key: Delete the cell under the cursor.
-W Key: Write the current state of cells to a file.
-L Key: Load a saved state from a file.
-C Key: Clear all cells from the grid.
+ <ul>
+        <li>Arrow Keys: Move the cursor in different directions (up, down, left, right).</li>
+        <li>Space Key: Fill the cell under the cursor with a vibrant green color.</li>
+        <li>D Key: Delete the cell currently under the cursor.</li>
+        <li>W Key: Save the current state of cells to a file.</li>
+        <li>L Key: Load previously saved cells from a file, with a random color.</li>
+        <li>C Key: Effortlessly clear all cells from the grid.</li>
+ </ul>
 
 Utilizes the org.academiadecodigo.simplegraphics library for graphics manipulation. https://github.com/academia-de-codigo/simple-graphics
 
