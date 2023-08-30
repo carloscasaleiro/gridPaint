@@ -8,6 +8,10 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Draw and interact with cells on a grid using the Simple Graphics library
+ * Handles user input through the keyboard and provides methods for manipulating the grid and saving/loading cell data
+ */
 public class Cursor implements KeyboardHandler {
 
     private static final String FILEPATH = "/gridPaint.txt";

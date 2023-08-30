@@ -2,6 +2,9 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Line;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
+/**
+ * Responsible for drawing a grid with rows and columns using the Simple Graphics library
+ */
 public class Grid {
 
     public static final int PADDING = 10;
@@ -21,10 +24,14 @@ public class Grid {
         rectangle.draw();
         rectangle.setColor(Color.BLACK);
         rectangle.fill();
-        for (int i = 0; i < 21; i++) {
+
+        for (int i = 0; i <= rows; i++) {
             Line lineX = new Line(PADDING, PADDING+CELLSIZE*i, PADDING+cols*CELLSIZE,PADDING+CELLSIZE*i);
             lineX.setColor(Color.WHITE);
             lineX.draw();
+        }
+
+        for (int i = 0; i <= cols; i++) {
             Line lineY = new Line(PADDING+CELLSIZE*i, PADDING, PADDING+CELLSIZE*i, PADDING+rows*CELLSIZE);
             lineY.setColor(Color.WHITE);
             lineY.draw();
