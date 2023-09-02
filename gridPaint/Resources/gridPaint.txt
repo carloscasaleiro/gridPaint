@@ -1,0 +1,8 @@
+Rectangle[x=40,y=10,width=30,height=30]
+Rectangle[x=70,y=70,width=30,height=30]
+Rectangle[x=100,y=100,width=30,height=30]
+Rectangle[x=130,y=130,width=30,height=30]
+Rectangle[x=160,y=160,width=30,height=30]
+Rectangle[x=190,y=190,width=30,height=30]
+Rectangle[x=220,y=220,width=30,height=30]
+Rectangle[x=250,y=250,width=30,height=30]
