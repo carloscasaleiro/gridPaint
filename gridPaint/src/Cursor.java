@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Cursor implements KeyboardHandler {
 
-    private static final String FILEPATH = "Resources/gridPaint.txt";
+    private final String filename = "gridPaint.txt";
     private final Rectangle cursor;
     private final Grid grid;
     ArrayList<Rectangle> cells = new ArrayList<>();
@@ -76,39 +76,41 @@ public class Cursor implements KeyboardHandler {
 
     public void writeToFile() throws IOException {
 
-        BufferedWriter bWriter = new BufferedWriter(new FileWriter(FILEPATH, false));
+        try (BufferedWriter bWriter = new BufferedWriter(new FileWriter(filename))) {
+            for (Rectangle cell : cells) {
+                bWriter.write(cell.toString());
+                bWriter.newLine();
+            }
 
-        for (Rectangle cell : cells) {
+            bWriter.flush();
 
-            bWriter.write(cell.toString());
-            bWriter.newLine();
+        } catch (IOException e) {
+            throw new RuntimeException("Error writing to file: " + e.getMessage(), e);
         }
-
-        bWriter.flush();
-        bWriter.close();
     }
 
     private void loadFromFile() throws IOException {
 
         clearAll();
 
-        BufferedReader bReader = new BufferedReader(new FileReader(FILEPATH));
+        try (BufferedReader bReader = new BufferedReader(new FileReader(filename))) {
+            String line;
 
-        String line;
+            while ((line = bReader.readLine()) != null) {
+                String[] values = line.split(",");
 
-        while ((line = bReader.readLine()) != null) {
+                int x = Integer.parseInt(values[0].substring(values[0].indexOf("=") + 1));
+                int y = Integer.parseInt(values[1].substring(values[1].indexOf("=") + 1));
 
-            String[] values = line.split(",");
+                Rectangle rectangle = new Rectangle(x, y, Grid.CELLSIZE, Grid.CELLSIZE);
+                rectangle.setColor(Color.BLACK);
+                rectangle.draw();
+                rectangle.fill();
 
-            int x = Integer.parseInt(values[0].substring(values[0].indexOf("=") + 1));
-            int y = Integer.parseInt(values[1].substring(values[1].indexOf("=") + 1));
-
-            Rectangle rectangle = new Rectangle(x, y, Grid.CELLSIZE, Grid.CELLSIZE);
-            rectangle.setColor(Color.BLACK);
-            rectangle.draw();
-            rectangle.fill();
-
-            cells.add(rectangle);
+                cells.add(rectangle);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading from file: " + e.getMessage(), e);
         }
 
         int random = (int) (Math.random() * colors.length);
