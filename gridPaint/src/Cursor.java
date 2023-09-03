@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Cursor implements KeyboardHandler {
 
-    private final String filename = "gridPaint.txt";
+    private final String filename = "GridPaint.txt";
     private final Rectangle cursor;
     private final Grid grid;
     ArrayList<Rectangle> cells = new ArrayList<>();
